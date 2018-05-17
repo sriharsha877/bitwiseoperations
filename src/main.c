@@ -1,12 +1,27 @@
 #include "bitwise.h"
 
-_display_manu_options()
+void _display_menu_options()
 {
-    printf("**************Menu***************");
+    printf("**************Menu***************\n"
+	   "1.Print In Hexadecimal\n");
 }
+
+void  print_hexadecimal(int n)
+{
+    int index = 0;
+    
+    for (index = sizeof(int) * 8 -1; index >= 0; index--) {
+	printf("%d", (n >> index) & 1);
+	if(index%4 == 0)
+	    printf(" ");
+    }
+    return;
+}
+
 int main(void)
 {
     int choice = 0;
 
-    _display_menu_opeions();
+    _display_menu_options();
+
 }
