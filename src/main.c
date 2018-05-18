@@ -10,7 +10,7 @@ void  print_hexadecimal(int n)
 {
     int index = 0;
     
-    for (index = sizeof(int) * 8 -1; index >= 0; index--) {
+    for (index = sizeof(int) * CHAR_BIT -1; index >= 0; index--) {
 	printf("%d", (n >> index) & 1);
 	if(index%4 == 0)
 	    printf(" ");
@@ -23,5 +23,8 @@ int main(void)
     int choice = 0;
 
     _display_menu_options();
+
+    printf("Enter Your choice: ");
+
 
 }
