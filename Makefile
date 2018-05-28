@@ -1,14 +1,18 @@
-.PHONY=all
+CC=gcc
+.PHONY=clean
 
-VPATH = ./src : ./obj : ./inc
+SRC:=./src
+OBJ:=./obj
+INC:=./inc
 
-a.out: main.o
-	gcc $^ -o $@
-	mv *.o ./obj
+SOURCES := $(wildcard $(SRC)/*.c)
+OBJECTS := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
 
-%.o:%.c
-	gcc -c ./src/*.c -I ./inc
+all: $(OBJECTS)
+	$(CC) $^ -o $@
 
+$(OBJ)/%.o:$(SRC)/%.c
+	$(CC) -I$(INC) -c $< -o $@
 clean:
 	rm -rf obj/*
 	rm -f a.out
